@@ -22,7 +22,14 @@ export default defineConfig({
         entryFileNames: "[name].js",
         format: "es",
       },
-      external: ["lit", "lit/decorators.js"],
+      external: [
+        "lit",
+        "lit/directive.js",
+        "lit/decorators.js",
+        "lit/directives/cache.js",
+        "lit/directives/unsafe-html.js",
+        "@fortawesome_fontawesome-svg-core",
+      ],
       plugins: [
         packageProcess({
           output: {
