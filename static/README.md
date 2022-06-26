@@ -11,7 +11,13 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 // import <fa-icon>
-import("@jensk/lit-fontawesome/fa-icon");
+import("@jensk/lit-fontawesome/components/fa-icon");
+// or
+import "@jensk/lit-fontawesome/components/fa-icon";
+// or
+import { FontAwesomeIcon } from "@jensk/lit-fontawesome";
+
+customElements.define("fa-icon", FontAwesomeIcon);
 
 ...
 
