@@ -1,2 +1,1 @@
-export { BorderComponent } from "./components/border-component";
-export { SumComponent } from "./components/sum-component";
+export { FontAwesomeIcon } from "./components/fa-icon";
