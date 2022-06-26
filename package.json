@@ -1,11 +1,25 @@
 {
-  "name": "lit-multi-lib",
-  "private": true,
+  "name": "@jensk/lit-fontawesome",
+  "description": "Unofficial Lit component for Font Awesome heavily inspired by vue-fontawesome!",
+  "keywords": [
+    "fontawesome",
+    "lit"
+  ],
+  "files": [
+    "*"
+  ],
+  "license": "MIT",
+  "private": false,
   "version": "0.0.7",
   "main": "index.js",
   "types": "index.d.ts",
-  "files": [
-    "*"
+  "homepage": "https://github.com/jensk-dev/lit-fontawesome",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jensk-dev/lit-fontawesome.git"
+  },
+  "contributors": [
+    "Jens Kresse <contact@jensk.dev>"
   ],
   "browser": true,
   "scripts": {
@@ -19,9 +33,11 @@
     "analyze": "lit-analyzer --strict src/**/*.ts"
   },
   "dependencies": {
-    "lit": "^2.2.6"
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "lit": "^2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6",
     "@jensk/rollup-plugin-package-process": "0.0.3",
     "@types/jsdom": "^16.2.14",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
