@@ -28,7 +28,7 @@ export default defineConfig({
         "lit/decorators.js",
         "lit/directives/cache.js",
         "lit/directives/unsafe-html.js",
-        "@fortawesome_fontawesome-svg-core",
+        "@fortawesome/fontawesome-svg-core",
       ],
       plugins: [
         packageProcess({
