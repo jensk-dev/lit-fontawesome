@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "private": false,
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "types": "index.d.ts",
   "homepage": "https://github.com/jensk-dev/lit-fontawesome",
