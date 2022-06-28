@@ -1,6 +1,7 @@
 import type {
   IconDefinition,
   IconLookup,
+  IconParams,
 } from "@fortawesome/fontawesome-svg-core";
 import type { PropertyValueMap, TemplateResult } from "lit";
 import { nothing } from "lit";
@@ -11,8 +12,6 @@ import {
 } from "@fortawesome/fontawesome-svg-core";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import type { DirectiveResult } from "lit/directive.js";
-import { cache } from "lit/directives/cache.js";
-import { objectWithKey } from "../utils/objectWithKey";
 import { FontAwesomeElement } from "../base/FontAwesomeElement";
 
 // fix flow
@@ -99,9 +98,6 @@ export class FontAwesomeIcon extends FontAwesomeElement {
   fade = false;
 
   @property({ type: Boolean })
-  beatFade = false;
-
-  @property({ type: Boolean })
   flash = false;
 
   @property({ type: Boolean })
@@ -115,7 +111,8 @@ export class FontAwesomeIcon extends FontAwesomeElement {
   private getClasses() {
     const family = FontAwesomeElement.family();
 
-    const classes = {
+    const applied = [];
+    const available = {
       [`${family}-spin`]: this.spin && !this.pulse,
       [`${family}-pulse`]: this.pulse && !this.spin,
       [`${family}-fw`]: this.fixedWidth,
@@ -141,14 +138,20 @@ export class FontAwesomeIcon extends FontAwesomeElement {
       [`${family}-spin-reverse`]: this.spinReverse,
     };
 
-    return Object.keys(classes)
-      .map(key => (classes[key] ? key : null))
-      .filter(key => key);
+    const keys = Object.keys(available);
+
+    for (let i = 0; i < keys.length; i++) {
+      if (available[keys[i]]) {
+        applied.push(keys[i]);
+      }
+    }
+
+    return applied;
   }
 
   private isValidIcon(): boolean {
-    return !!(
-      this.icon &&
+    return (
+      typeof this.icon === "object" &&
       Array.isArray(this.icon.icon) &&
       typeof this.icon.iconName === "string" &&
       typeof this.icon.prefix === "string"
@@ -215,38 +218,41 @@ export class FontAwesomeIcon extends FontAwesomeElement {
       return;
     }
 
-    const classes = objectWithKey("classes", this.getClasses());
-    const transform = objectWithKey(
-      "transform",
+    this.template = FontAwesomeIcon.toHtml(this.icon!, this.getParams());
+  }
+
+  private getParams(): IconParams {
+    const params: IconParams = {};
+    const classes = this.getClasses();
+    const transform =
       typeof this.transform === "string"
         ? faParse.transform(this.transform)
-        : this.transform
-    );
-    const mask = objectWithKey("mask", this.mask);
-    const title = this.ariaTitle !== null ? { title: this.ariaTitle } : {};
+        : this.transform;
 
-    const renderedIcon = faIcon(this.icon!, {
-      ...classes,
-      ...transform,
-      ...mask,
-      symbol: this.symbol,
-      ...title,
-    });
+    if (classes.length > 0) params.classes = classes;
+    if (transform) params.transform = transform;
+    if (this.mask) params.mask = this.mask;
+    if (this.ariaTitle) params.title = this.ariaTitle;
 
-    this.template = unsafeHTML(renderedIcon.html[0]);
+    return params;
+  }
+
+  private static toHtml(
+    icon: IconDefinition,
+    params: IconParams
+  ): TemplateResult {
+    return unsafeHTML(faIcon(icon, params).html[0]) as TemplateResult;
   }
 
   protected update(
     changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
   ): void {
-    if (this.icon !== undefined) {
-      this.buildTemplate(); // FIXME: optimize
-    }
+    this.buildTemplate();
     super.update(changedProperties);
   }
 
   protected render(): unknown {
-    return cache(this.template || nothing);
+    return this.template || nothing;
   }
 }
 
