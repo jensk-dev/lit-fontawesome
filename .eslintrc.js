@@ -28,5 +28,6 @@ module.exports = {
       { prefer: "type-imports" },
     ],
     "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
   },
 };
