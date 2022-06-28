@@ -23,6 +23,7 @@
   ],
   "browser": true,
   "scripts": {
+    "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
     "cover": "vitest run --coverage",
@@ -33,11 +34,11 @@
     "analyze": "lit-analyzer --strict src/**/*.ts"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6",
     "lit": "^2"
   },
   "devDependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@jensk/rollup-plugin-package-process": "0.0.3",
     "@types/jsdom": "^16.2.14",
     "@typescript-eslint/eslint-plugin": "^5.29.0",

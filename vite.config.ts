@@ -38,6 +38,11 @@ export default defineConfig({
           process: inputPackage => {
             inputPackage.type = "module";
             inputPackage.module = inputPackage.main;
+
+            delete inputPackage.dependencies[
+              "@fortawesome/free-solid-svg-icons"
+            ];
+
             inputPackage.peerDependencies = inputPackage.dependencies;
 
             delete inputPackage.devDependencies;
