@@ -5,7 +5,9 @@
 ## Usage
 
 ### \<fa-icon\>
+
 ---
+
 ```ts
 // import the icon you want to display
 import { faXmark } from "@fortawesome/free-solid-svg-icons";

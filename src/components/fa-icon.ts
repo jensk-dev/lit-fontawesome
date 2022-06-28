@@ -245,7 +245,7 @@ export class FontAwesomeIcon extends FontAwesomeElement {
   }
 
   protected update(
-    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+    changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>
   ): void {
     this.buildTemplate();
     super.update(changedProperties);
