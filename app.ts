@@ -7,6 +7,11 @@ import "./src/components/fa-icon";
 @customElement("app-element")
 export class App extends LitElement {
   protected render(): unknown {
-    return html`<fa-icon .icon="${faXmark}"></fa-icon>`;
+    return html`<fa-icon
+      .spin="${true}"
+      .spinReverse="${true}"
+      .size="${"10x"}"
+      .icon="${faXmark}"
+    ></fa-icon>`;
   }
 }
