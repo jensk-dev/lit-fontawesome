@@ -113,28 +113,32 @@ export class FontAwesomeIcon extends FontAwesomeElement {
   private template?: TemplateResult | DirectiveResult;
 
   private getClasses() {
+    const family = FontAwesomeElement.family();
+
     const classes = {
-      "fa-spin": this.spin && !this.pulse,
-      "fa-pulse": this.pulse && !this.spin,
-      "fa-fw": this.fixedWidth,
-      "fa-border": this.border,
-      "fa-li": this.listItem,
-      "fa-inverse": this.inverse,
-      "fa-flip": this.flip === true, // FIXME: flip horizontal & vertical not working as expected
-      "fa-flip-horizontal": this.flip === "horizontal" || this.flip === "both",
-      "fa-flip-vertical": this.flip === "vertical" || this.flip === "both",
-      [`fa-${this.size}`]: this.size !== null,
-      [`fa-rotate-${this.rotation}`]: this.rotation !== null,
-      [`fa-pull-${this.pull}`]: this.pull !== null,
-      "fa-swap-opacity": this.swapOpacity,
-      "fa-bounce": this.bounce,
-      "fa-shake": this.shake,
-      "fa-beat": this.beat && !this.fade,
-      "fa-fade": this.fade && !this.beat,
-      "fa-beat-fade": this.fade && this.beat,
-      "fa-flash": this.flash,
-      "fa-spin-pulse": this.spin && this.pulse,
-      "fa-spin-reverse": this.spinReverse,
+      [`${family}-spin`]: this.spin && !this.pulse,
+      [`${family}-pulse`]: this.pulse && !this.spin,
+      [`${family}-fw`]: this.fixedWidth,
+      [`${family}-border`]: this.border,
+      [`${family}-li`]: this.listItem,
+      [`${family}-inverse`]: this.inverse,
+      [`${family}-flip`]: this.flip === true, // FIXME: flip horizontal & vertical not working as expected
+      [`${family}-flip-horizontal`]:
+        this.flip === "horizontal" || this.flip === "both",
+      [`${family}-flip-vertical`]:
+        this.flip === "vertical" || this.flip === "both",
+      [`${family}-${this.size}`]: this.size !== null,
+      [`${family}-rotate-${this.rotation}`]: this.rotation !== null,
+      [`${family}-pull-${this.pull}`]: this.pull !== null,
+      [`${family}-swap-opacity`]: this.swapOpacity,
+      [`${family}-bounce`]: this.bounce,
+      [`${family}-shake`]: this.shake,
+      [`${family}-beat`]: this.beat && !this.fade,
+      [`${family}-fade`]: this.fade && !this.beat,
+      [`${family}-beat-fade`]: this.fade && this.beat,
+      [`${family}-flash`]: this.flash,
+      [`${family}-spin-pulse`]: this.spin && this.pulse,
+      [`${family}-spin-reverse`]: this.spinReverse,
     };
 
     return Object.keys(classes)
