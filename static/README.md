@@ -4,7 +4,7 @@
 
 ## Usage
 
-### \<fa-icon\>
+### `<fa-icon>`
 
 ---
 
@@ -12,15 +12,16 @@
 // import the icon you want to display
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-// import <fa-icon>
+// import <fa-icon> in either of 3 ways
+// ===== 1. =====
 import("@jensk/lit-fontawesome/components/fa-icon");
-// or
+// ===== 2. =====
 import "@jensk/lit-fontawesome/components/fa-icon";
-// or
+// ===== 3. =====
 import { FontAwesomeIcon } from "@jensk/lit-fontawesome";
 
 customElements.define("fa-icon", FontAwesomeIcon);
-
+// ==============
 ...
 
 protected render() {
@@ -30,5 +31,38 @@ protected render() {
     .icon="${ faXmark }"
     .flash="${ true }"
   ></fa-icon>`;
+}
+```
+
+### `<fa-layer>`
+
+#### Disclaimer
+
+`<fa-layer>` currently has issues applying transforms properly and is generally unstable and experimental. Proceed with caution
+
+---
+
+```ts
+// import the icon you want to display
+import { faCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+// import <fa-layer> in either of 3 ways
+// ===== 1. =====
+import("@jensk/lit-fontawesome/components/fa-layer");
+// ===== 2. =====
+import "@jensk/lit-fontawesome/components/fa-layer";
+// ===== 3. =====
+import { FontAwesomeLayer } from "@jensk/lit-fontawesome";
+
+customElements.define("fa-layer", FontAwesomeIcon);
+// ==============
+...
+
+protected render() {
+  // use the icon layers in the template
+  return html`<fa-layer>
+      <fa-icon style="color: red;" .icon="${faCircle}"></fa-icon>
+      <fa-icon style="color: blue;" .icon="${faTimes}"></fa-icon>
+    </fa-layer>`
 }
 ```
