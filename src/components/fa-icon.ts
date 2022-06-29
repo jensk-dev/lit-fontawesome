@@ -222,7 +222,7 @@ export class FontAwesomeIcon extends FontAwesomeElement {
     this.template = FontAwesomeIcon.toHtml(this.icon!, this.getParams());
   }
 
-  private getParams(): IconParams {
+  public getParams(): IconParams {
     const params: IconParams = {};
     const classes = this.getClasses();
     const transform =
@@ -235,7 +235,7 @@ export class FontAwesomeIcon extends FontAwesomeElement {
     if (this.mask) params.mask = this.mask;
     if (this.ariaTitle) params.title = this.ariaTitle;
 
-    return params;
+    return JSON.parse(JSON.stringify(params));
   }
 
   private static toHtml(
