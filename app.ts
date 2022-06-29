@@ -22,7 +22,7 @@ export class App extends LitElement {
       ></fa-icon>
       <hr />
       <div style="width: auto; overflow:hidden; height: auto;">
-        <!-- <fa-layer>
+        <fa-layer>
           <fa-icon
             .spin="${true}"
             .spinReverse="${true}"
@@ -36,7 +36,7 @@ export class App extends LitElement {
             .transform="${{ x: 40 }}"
           ></fa-icon>
           <fa-text .value="${"test"}"></fa-text>
-        </fa-layer> -->
+        </fa-layer>
 
         <fa-layer>
           <fa-icon style="color: red;" .icon="${faCircle}"></fa-icon>
