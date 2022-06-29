@@ -3,6 +3,8 @@ import { customElement } from "lit/decorators.js";
 
 import {
   faArrowAltCircleDown,
+  faCircle,
+  faTimes,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import "./src/components/fa-icon";
@@ -19,8 +21,8 @@ export class App extends LitElement {
         .icon="${faXmark}"
       ></fa-icon>
       <hr />
-      <div>
-        <fa-layer>
+      <div style="width: auto; overflow:hidden; height: auto;">
+        <!-- <fa-layer>
           <fa-icon
             .spin="${true}"
             .spinReverse="${true}"
@@ -34,7 +36,20 @@ export class App extends LitElement {
             .transform="${{ x: 40 }}"
           ></fa-icon>
           <fa-text .value="${"test"}"></fa-text>
+        </fa-layer> -->
+
+        <fa-layer>
+          <fa-icon style="color: red;" .icon="${faCircle}"></fa-icon>
+          <fa-icon style="color: blue;" .icon="${faTimes}"></fa-icon>
         </fa-layer>
+
+        <span class="fa-layers fa-fw" style="background:MistyRose">
+          <i class="fa-solid fa-circle" style="color:Tomato"></i>
+          <i
+            class="fa-inverse fa-solid fa-times"
+            data-fa-transform="shrink-6"
+          ></i>
+        </span>
       </div>`;
   }
 }

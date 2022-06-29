@@ -160,6 +160,8 @@ export class FontAwesomeIcon extends FontAwesomeElement implements Layerable {
       }
     }
 
+    applied.push(...this.classList);
+
     return applied;
   }
 
@@ -248,7 +250,28 @@ export class FontAwesomeIcon extends FontAwesomeElement implements Layerable {
     if (this.mask) params.mask = this.mask;
     if (this.ariaTitle) params.title = this.ariaTitle;
 
+    params.styles = this.getStyles();
+
     return JSON.parse(JSON.stringify(params));
+  }
+
+  private getStyles() {
+    const style = this.getAttribute("style");
+    const styleMap: { [key: string]: string } = {};
+
+    if (!style) return styleMap;
+
+    const properties = style
+      .trim()
+      .split(";")
+      .filter(prop => prop.trim() !== "");
+
+    for (let i = 0; i < properties.length; i++) {
+      const [key, val] = properties[i].split(":");
+      styleMap[key] = val;
+    }
+
+    return styleMap;
   }
 
   private static toHtml(
