@@ -1,7 +1,9 @@
 import type {
+  Icon,
   IconDefinition,
   IconLookup,
   IconParams,
+  Text,
   Transform,
 } from "@fortawesome/fontawesome-svg-core";
 import type { PropertyValueMap, TemplateResult } from "lit";
@@ -14,11 +16,22 @@ import {
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import type { DirectiveResult } from "lit/directive.js";
 import { FontAwesomeElement } from "../base/FontAwesomeElement";
+import type { Layerable } from "../base/Layerable";
 
 // fix flow
 
 @customElement("fa-icon")
-export class FontAwesomeIcon extends FontAwesomeElement {
+export class FontAwesomeIcon extends FontAwesomeElement implements Layerable {
+  public getCompiled(): Icon | Text | null {
+    if (!this.icon) {
+      return null;
+    }
+
+    const params = this.getParams();
+
+    return faIcon(this.icon, params);
+  }
+
   @property({ type: Boolean })
   border = false;
 
