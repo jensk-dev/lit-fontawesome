@@ -2,6 +2,7 @@ import type {
   IconDefinition,
   IconLookup,
   IconParams,
+  Transform,
 } from "@fortawesome/fontawesome-svg-core";
 import type { PropertyValueMap, TemplateResult } from "lit";
 import { nothing } from "lit";
@@ -73,7 +74,7 @@ export class FontAwesomeIcon extends FontAwesomeElement {
   spin = false;
 
   @property({ type: Object })
-  transform: object | null = null;
+  transform: Transform | null = null;
 
   @property({ type: Boolean })
   symbol: boolean | string = false;
