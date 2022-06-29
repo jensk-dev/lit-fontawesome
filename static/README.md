@@ -54,7 +54,7 @@ import "@jensk/lit-fontawesome/components/fa-layer";
 // ===== 3. =====
 import { FontAwesomeLayer } from "@jensk/lit-fontawesome";
 
-customElements.define("fa-layer", FontAwesomeIcon);
+customElements.define("fa-layer", FontAwesomeLayer);
 // ==============
 ...
 
