@@ -1,6 +1,11 @@
 {
   "name": "@jensk/lit-fontawesome",
   "description": "Unofficial Lit component for Font Awesome heavily inspired by vue-fontawesome!",
+  "author": {
+    "email": "contact@jensk.dev",
+    "name": "Jens Kresse",
+    "url": "https://github.com/jensk-dev"
+  },
   "keywords": [
     "fontawesome",
     "lit"
@@ -18,9 +23,6 @@
     "type": "git",
     "url": "https://github.com/jensk-dev/lit-fontawesome.git"
   },
-  "contributors": [
-    "Jens Kresse <contact@jensk.dev>"
-  ],
   "browser": true,
   "scripts": {
     "dev": "vite",
