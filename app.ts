@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./src/components/fa-icon";
 import "./src/components/fa-layer";
+import "./src/components/fa-text";
 
 @customElement("app-element")
 export class App extends LitElement {
@@ -32,6 +33,7 @@ export class App extends LitElement {
             .icon="${faArrowAltCircleDown}"
             .transform="${{ x: 40 }}"
           ></fa-icon>
+          <fa-text .value="${"test"}"></fa-text>
         </fa-layer>
       </div>`;
   }
