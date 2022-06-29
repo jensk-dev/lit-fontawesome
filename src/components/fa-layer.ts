@@ -35,7 +35,7 @@ export class FontAwesomeLayer extends FontAwesomeElement {
   }
 
   protected update(
-    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+    changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>
   ): void {
     const family = FontAwesomeElement.family();
     const classes = [];
