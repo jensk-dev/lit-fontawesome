@@ -6,17 +6,18 @@ import type {
   Text,
   Transform,
 } from "@fortawesome/fontawesome-svg-core";
-import type { PropertyValueMap, TemplateResult } from "lit";
-import { nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
 import {
   icon as faIcon,
   parse as faParse,
 } from "@fortawesome/fontawesome-svg-core";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import type { PropertyValueMap, TemplateResult } from "lit";
+import { nothing } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import type { DirectiveResult } from "lit/directive.js";
+
 import { FontAwesomeElement } from "../base/FontAwesomeElement";
 import type { Layerable } from "../base/Layerable";
+import buildTemplate from "../utils/build";
 
 // fix flow
 
@@ -278,7 +279,8 @@ export class FontAwesomeIcon extends FontAwesomeElement implements Layerable {
     icon: IconDefinition,
     params: IconParams
   ): TemplateResult {
-    return unsafeHTML(faIcon(icon, params).html[0]) as TemplateResult;
+    const abstract = faIcon(icon, params).abstract[0];
+    return buildTemplate(abstract) as TemplateResult;
   }
 
   protected update(

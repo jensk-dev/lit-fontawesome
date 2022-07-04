@@ -2,14 +2,14 @@ import type {
   Icon as FaIcon,
   Text as FaText,
 } from "@fortawesome/fontawesome-svg-core";
-
 import { layer as faLayer } from "@fortawesome/fontawesome-svg-core";
 import type { PropertyValueMap, TemplateResult } from "lit";
 import { nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
+
 import { FontAwesomeElement } from "../base/FontAwesomeElement";
 import type { Layerable } from "../base/Layerable";
+import buildTemplate from "../utils/build";
 
 @customElement("fa-layer")
 export class FontAwesomeLayer extends FontAwesomeElement {
@@ -51,7 +51,8 @@ export class FontAwesomeLayer extends FontAwesomeElement {
 
   private static buildLayers(layerItems: (FaIcon | FaText)[]) {
     const layer = faLayer(add => add(layerItems));
-    return unsafeHTML(layer.html[0]) as TemplateResult;
+    const abstract = layer.abstract[0];
+    return buildTemplate(abstract) as TemplateResult;
   }
 
   protected render(): unknown {

@@ -17,7 +17,7 @@ module.exports = {
     sourceType: "module",
     project: ["./tsconfig.json", "./cypress/tsconfig.json"],
   },
-  plugins: ["@typescript-eslint", "lit"],
+  plugins: ["simple-import-sort", "@typescript-eslint", "lit"],
   rules: {
     "no-plusplus": "off",
     "import/prefer-default-export": "off",
@@ -29,5 +29,7 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
 };
