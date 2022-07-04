@@ -25,6 +25,7 @@
   },
   "browser": true,
   "scripts": {
+    "release": "pnpm build && cd dist && pnpm publish --access=public && cd ..",
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
@@ -32,7 +33,7 @@
     "e2e:open": "cypress open --e2e",
     "e2e:run": "cypress run --e2e",
     "e2e:verify": "cypress verify",
-    "e2e:start": "yarn build && concurrently --raw --kill-others --success \"all\" \"yarn preview\" \"yarn e2e:open\"",
+    "e2e:start": "pnpm build && concurrently --raw --kill-others --success \"all\" \"pnpm preview\" \"pnpm e2e:open\"",
     "analyze": "lit-analyzer --strict src/**/*.ts"
   },
   "dependencies": {
